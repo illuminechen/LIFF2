@@ -16,9 +16,8 @@
       <div id="a"></div>
 	  <iframe id ="iframe" frameborder="0" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
 		<script>
-            const urlParams = new URLSearchParams(window.location.search);				
-
 			$(document).ready(function(){	
+				const urlParams = new URLSearchParams(window.location.search);				
                 const liffid = urlParams.get('liffId');
                 $("#a").html(liffId);
 
@@ -32,7 +31,7 @@
                   liff.getProfile()
                   .then(profile => {
                       const name = profile.displayName;
-                      alert(name);
+					  $("#a").html(name);
                       const url = urlParams.get('url');
                       const publicic = urlParams.get('p');
                       const title = urlParams.get('title');
