@@ -43,8 +43,8 @@
 					  urlParams.delete("url");
 					  urlParams.delete("p");
 					  urlParams.delete("title");
-					  $("#iframe").attr("src",url+"?"+urlParams+"&userId="+userId+"&userName="+encodeURI(name));
 					  $("#a").html(url+"?"+urlParams+"&userId="+userId+"&userName="+encodeURI(name));
+					  $("#iframe").attr("src",url+"?"+urlParams+"&userId="+userId+"&userName="+encodeURI(name));
 
 				    })
                     .catch((err) => {
