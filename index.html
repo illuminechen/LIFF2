@@ -27,11 +27,17 @@
                   liffId: liffId
                 })
                 .then(() => {
+				  if (!liff.isLoggedIn()) {
+                    // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
+                    liff.login();
+                  }
+
                   // start to use LIFF's api
                   $("#a").html("GOOD");
 
                   liff.getProfile()
                   .then(profile => {
+					
                       const name = profile.displayName;
 					  $("#a").html(name);
                       const url = urlParams.get('url');
