@@ -17,11 +17,9 @@
 	  <iframe id ="iframe" frameborder="0" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
 		<script>
 			$(document).ready(function(){
-                $("#a").html("HI");
-			
+
 				const urlParams = new URLSearchParams(window.location.search);				
                 const liffId = urlParams.get('liffId');
-                $("#a").html(liffId);
 
                 liff.init({
                   liffId: liffId
@@ -31,15 +29,10 @@
                     // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
                     liff.login();
                   }
-
                   // start to use LIFF's api
-                  $("#a").html("GOOD");
-
                   liff.getProfile()
                   .then(profile => {
-					
                       const name = profile.displayName;
-					  $("#a").html(name);
                       const url = urlParams.get('url');
                       const publicic = urlParams.get('p');
                       const title = urlParams.get('title');
@@ -47,11 +40,13 @@
                         document.title = name+"的"+decodeURI(title);
                       else 
                         document.title = decodeURI(title);						  
-                        urlParams.delete("url");
-                        urlParams.delete("p");
-                        urlParams.delete("title");
-                        $("#iframe").attr("src",url+"?"+urlParams+"&userId="+userId+"&userName="+encodeURI(name));
-                      })
+					  urlParams.delete("url");
+					  urlParams.delete("p");
+					  urlParams.delete("title");
+					  $("#iframe").attr("src",url+"?"+urlParams+"&userId="+userId+"&userName="+encodeURI(name));
+					  $("#a").html(url+"?"+urlParams+"&userId="+userId+"&userName="+encodeURI(name));
+
+				    })
                     .catch((err) => {
                       console.log('error', err);
                     });
