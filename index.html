@@ -32,6 +32,7 @@
                   // start to use LIFF's api
                   liff.getProfile()
                   .then(profile => {
+					  const userId=profile.userId;
                       const name = profile.displayName;
                       const url = urlParams.get('url');
                       const publicic = urlParams.get('p');
