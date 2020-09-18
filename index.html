@@ -22,12 +22,14 @@
                 const liffId = urlParams.get('liffId');
 
                 liff.init({
-                  liffId: liffId
+                  liffId: liffId				  
                 })
                 .then(() => {
 				  if (!liff.isLoggedIn()) {
                     // set `redirectUri` to redirect the user to a URL other than the front page of your LIFF app.
-                    liff.login();
+                    liff.login({
+					redirectUri: href
+					});
                   }
                   // start to use LIFF's api
                   liff.getProfile()
